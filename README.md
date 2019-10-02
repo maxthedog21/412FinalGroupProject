@@ -7,6 +7,6 @@ To Do List:
 Find a game!
 
 Possible Candidate:
-https://codeincomplete.com/posts/javascript-racer/ 
+https://codeincomplete.com/posts/javascript-racer/  \n
 https://github.com/jakesgordon/javascript-racer/
 
