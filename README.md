@@ -5,8 +5,6 @@ final mva web game application
 To Do List:
 
 Find a game!
+Settle on technologies/CMS to use(Wordpress etc.)
 
-Possible Candidate:
-https://codeincomplete.com/posts/javascript-racer/  \n
-https://github.com/jakesgordon/javascript-racer/
 
