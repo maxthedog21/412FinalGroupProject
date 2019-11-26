@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<head>
+  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase.js"></script>
+</head>
+<body style = "background-color: black">
+<nav>
+  <h1 style = "text-align: center; color: white">Add Question</h1>
+<ul style = " text-align: center">
+<li style = "display: inline-block; margin: 10px"><a href = "game.html" style = " color: white">game questions</a></li>
+<li style = "display: inline-block; margin: 10px"><a href = "index.html" style = " color: white">Car Game</a></li>
+<li style = "display: inline-block; margin: 10px"><a href = "scores.html" style = " color: white">game scores</a></li>
+  </ul>
+
+</nav>
+<form>
+  <div style = "text-align: center">
+  <p style = "color: white; text-align: center; ">Please enter question:</p>
+  <textarea id = "question" style = "test-align: center"></textarea>
+  </div>
+  
+  <div style = "text-align: center">
+  <p style = "color: white; text-align: center; ">Please enter answer One:</p>
+  <textarea id = "answerOne" style = "test-align: center"></textarea>
+  </div>
+
+  <div style = "text-align: center">
+  <p style = "color: white; text-align: center; ">Please enter answer Two:</p>
+  <textarea id = "answerTwo" style = "test-align: center"></textarea>
+  </div>
+
+  <div style = "text-align: center">
+  <p style = "color: white; text-align: center; ">Please enter answer Three:</p>
+  <textarea id = "answerThree" style = "test-align: center"></textarea>
+  </div>
+
+  <div style = "text-align: center">
+  <p style = "color: white; text-align: center; ">Please enter answer Four:</p>
+  <textarea id = "answerFour" style = "test-align: center"></textarea> 
+  </div>
+<h3 style = "color: white; text-align: center"> Select the right answer: </h3>
+
+  <ul style = " text-align: center">
+  <li><input type="radio" id="a1" name="drone" value="230" style = "display: inline-block">
+  <label style = "color: white" for="a1">Answer One</label></li>
+  
+  <li><input type="radio" id="a2" name="drone" value="360" style = "display: inline-block">
+  <label style = "color: white" for="a2">Answer Two</label></li>
+
+  <li><input type="radio" id="a3" name="drone" value="490" style = "display: inline-block">
+  <label style = "color: white" for="a3">Answer Three</label></li>
+
+  <li><input type="radio" id="a4" name="drone" value="610" style = "display: inline-block">
+  <label style = "color: white" for="a4">Answer Four</label></li>
+  </ul>
+  
+
+  <button id= "submit">Submit new question</button>
+  
+</form>
+
+
+  <script>
+     var firebaseConfig = {
+    apiKey: "AIzaSyD7Wl-hS9N61BCnH9TcFqwzrGjTJzHWPrI",
+    authDomain: "jscargame-a4aa0.firebaseapp.com",
+    databaseURL: "https://jscargame-a4aa0.firebaseio.com",
+    projectId: "jscargame-a4aa0",
+    storageBucket: "jscargame-a4aa0.appspot.com",
+    messagingSenderId: "271532802757",
+    appId: "1:271532802757:web:c2c11fbdc89cc17fa166ac",
+    measurementId: "G-L2D3RSV240"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  //console.log(firebase);
+  var database = firebase.database();
+  var ref = database.ref('game');
+  var scoreRef = ref.child('score');
+  var questionRef = ref.child('question');
+document.getElementById('submit').addEventListener("click", submit);
+    function submit(){
+
+      
+var q = document.getElementById("question").value;
+var a1 = document.getElementById("answerOne").value;
+var a2 = document.getElementById("answerTwo").value;
+var a3 = document.getElementById("answerThree").value;
+var a4 = document.getElementById("answerFour").value;
+var correctAnswer;
+if(document.getElementById('a1').checked) {
+ correctAnswer  = 230;
+}else if(document.getElementById('a2').checked) {
+ correctAnswer  = 360;
+}else if(document.getElementById('a3').checked) {
+ correctAnswer  = 490;
+}else if(document.getElementById('a4').checked) {
+ correctAnswer  = 610;
+}
+
+
+  
+   var data = {
+       question: q,
+       aa1: a1,
+       aa2: a2,
+       aa3: a3,
+       aa4: a4,
+       correct:correctAnswer
+     }
+     questionRef.push(data);
+     console.log(data.aa1);
+     console.log(data.aa2);
+     console.log(data.aa3);
+     console.log(data.aa4);
+     console.log(data.correct);
+}
+  </script>
+</body>
+<style>
+  button{
+    
+    background-color: #4CAF50; /* Green */
+    margin: 10px;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  }
+</style>
+</html>
